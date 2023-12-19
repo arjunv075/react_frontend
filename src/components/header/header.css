@@ -1,0 +1,15 @@
+#headerid:focus,
+#headerid:hover {
+  color: initial;
+  background-color: rgb(93, 93, 93);
+}
+
+#headerid{
+    font-weight:bold;
+}   
+
+#mainid{
+    background: grey; 
+    box-shadow: none; 
+}
+
