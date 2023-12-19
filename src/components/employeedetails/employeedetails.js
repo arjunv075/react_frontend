@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Employee from '../employee/employee';
 import Leaves from '../leaves/leaves';
 
 
 export default function EmployeeDetails() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [employeedetails, setEmployeedetails] = useState([]);
   const [updateEmployeeDetails, setUpdateEmployeeDetails] = useState(false);
 
@@ -16,13 +18,18 @@ export default function EmployeeDetails() {
   };
 
   useEffect(() => {
+    if (parseInt(id, 10) > 100) 
+    {
+      navigate('/error');
+      return;
+    }
     fetch(`http://localhost:5000/employees/${id}`)
       .then(response => response.json())
       .then(dataemp => {
         setEmployeedetails(dataemp);
       })
       .catch(error => console.error('Error fetching data:', error));
-  }, [id,updateEmployeeDetails]);
+  }, [id,updateEmployeeDetails,navigate]);
 
   const handleUpdateEmployeeDetails = () => {
     setUpdateEmployeeDetails(prevState => !prevState);
