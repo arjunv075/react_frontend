@@ -1,0 +1,9 @@
+#name:focus,
+#name:hover {
+  color: initial;
+  background-color: rgb(93,93,93);
+}
+#name{
+  color: black;
+  font-weight: 300;
+}
